@@ -16,7 +16,7 @@ It can:
 - [vmdk_shell.py](./vmdk_shell.py): interactive shell
 - [vmdk_shell_ops.py](./vmdk_shell_ops.py): shell-facing operations
 - [analyze_vmdk.py](./analyze_vmdk.py): simple local usage sample
-- [tools](./tools): built-in analysis tools such as `file`, `dd`, `hexdump`, `readelf`
+- [vmdkshell_tools](./vmdkshell_tools): built-in analysis tools such as `file`, `dd`, `hexdump`, `readelf`
 - [tests](./tests): unit tests
 - [third_party/file_magic](./third_party/file_magic/README.md): vendored upstream `file/libmagic` rule subset
 
@@ -35,6 +35,35 @@ python analyze_vmdk.py
 ```
 
 That starts the interactive shell.
+
+## Installation
+
+For local development, editable install is the recommended mode:
+
+```powershell
+python -m pip install wheel
+python -m pip install -e .
+```
+
+After installation, you can start the shell with:
+
+```powershell
+vmdk-shell <image_path>
+```
+
+Example:
+
+```powershell
+vmdk-shell .\sample.vmdk
+vmdk-shell .\disk.raw --partition 1
+vmdk-shell .\disk.raw --unlock-key-file .\lvmkey
+```
+
+If you are in an offline environment but already have `setuptools` and `wheel` installed, this also works:
+
+```powershell
+python -m pip install -e . --no-build-isolation
+```
 
 ## Shell Notes
 

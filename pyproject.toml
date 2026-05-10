@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vmdkshell"
+version = "0.1.0"
+description = "Interactive VMDK and raw image analysis shell"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Hli-ke"}
+]
+dependencies = [
+  "cryptography"
+]
+
+[project.optional-dependencies]
+compression = [
+  "zstandard",
+  "lz4"
+]
+
+[project.scripts]
+vmdk-shell = "vmdk_shell_cli:main"
+
+[tool.setuptools]
+py-modules = [
+  "analyze_vmdk",
+  "base_analyze",
+  "const_define",
+  "vmdk_shell",
+  "vmdk_shell_cli",
+  "vmdk_shell_ops"
+]
+
+[tool.setuptools.packages.find]
+include = ["crypto_state", "filesystems", "partitions", "vmdkshell_tools"]
+
+[tool.setuptools.package-data]
+vmdkshell_tools = [
+  "vendor/file_magic/COPYING",
+  "vendor/file_magic/README.md",
+  "vendor/file_magic/README.upstream.md",
+  "vendor/file_magic/Magdir/archive",
+  "vendor/file_magic/Magdir/compress",
+  "vendor/file_magic/Magdir/linux",
+]

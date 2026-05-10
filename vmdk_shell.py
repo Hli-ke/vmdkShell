@@ -1,7 +1,7 @@
 import os
 import shlex
 
-from tools import build_default_registry
+from vmdkshell_tools import build_default_registry
 
 
 class VMDKShell:

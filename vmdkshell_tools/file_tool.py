@@ -1,5 +1,6 @@
 import bz2
 import gzip
+import importlib.resources as resources
 import io
 import os
 import re
@@ -102,10 +103,21 @@ class FileTool(ShellTool):
 
     def _describe_with_vendored_magic_from_data(self, data: bytes):
         if self.__class__._vendored_engine is None:
-            base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "third_party", "file_magic"))
+            base_dir = self._resolve_vendored_magic_dir()
             self.__class__._vendored_engine = VendoredMagicEngine(base_dir)
 
         return self.__class__._vendored_engine.describe(data)
+
+    def _resolve_vendored_magic_dir(self):
+        try:
+            package_root = resources.files("vmdkshell_tools")
+            candidate = package_root.joinpath("vendor", "file_magic")
+            if candidate.is_dir():
+                return str(candidate)
+        except Exception:
+            pass
+
+        return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "third_party", "file_magic"))
 
     def _normalize_description(self, text: str):
         text = re.sub(r"\s+([,.:])", r"\1", text)

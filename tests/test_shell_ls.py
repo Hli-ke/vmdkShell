@@ -893,7 +893,7 @@ class ShellBehaviorTests(unittest.TestCase):
             returncode = 0
             stdout = "Linux kernel x86 boot executable bzImage\n"
 
-        with patch("tools.file_tool.shutil.which", return_value="file"), patch("tools.file_tool.subprocess.run", return_value=Result()):
+        with patch("vmdkshell_tools.file_tool.shutil.which", return_value="file"), patch("vmdkshell_tools.file_tool.subprocess.run", return_value=Result()):
             with redirect_stdout(output):
                 shell.execute_command("file", ["/boot/flatkc"])
 
