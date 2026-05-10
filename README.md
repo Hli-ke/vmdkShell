@@ -15,7 +15,6 @@ It can:
 - [base_analyze.py](./base_analyze.py): core image abstraction and filesystem/container discovery
 - [vmdk_shell.py](./vmdk_shell.py): interactive shell
 - [vmdk_shell_ops.py](./vmdk_shell_ops.py): shell-facing operations
-- [analyze_vmdk.py](./analyze_vmdk.py): simple local usage sample
 - [vmdkshell_tools](./vmdkshell_tools): built-in analysis tools such as `file`, `dd`, `hexdump`, `readelf`
 - [tests](./tests): unit tests
 - [third_party/file_magic](./third_party/file_magic/README.md): vendored upstream `file/libmagic` rule subset
@@ -24,17 +23,13 @@ It can:
 
 This repository is currently a practical local tool project, not a polished package release.
 
-The codebase is usable as-is, but the sample entry script in [analyze_vmdk.py](./analyze_vmdk.py) contains machine-local paths and should be treated as an example, not a stable CLI.
-
 ## Quick Start
 
-Open [analyze_vmdk.py](./analyze_vmdk.py) and replace the local `filePath` value with your own image path, then run:
+Run the installed CLI directly:
 
 ```powershell
-python analyze_vmdk.py
+vmdk-shell <image_path>
 ```
-
-That starts the interactive shell.
 
 ## Installation
 

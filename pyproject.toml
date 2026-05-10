@@ -27,7 +27,6 @@ vmdk-shell = "vmdk_shell_cli:main"
 
 [tool.setuptools]
 py-modules = [
-  "analyze_vmdk",
   "base_analyze",
   "const_define",
   "vmdk_shell",
